@@ -1,7 +1,7 @@
 import { 
     Controller, 
     Get, Post , UseGuards, Request , Response, Headers, Delete,
-    UnauthorizedException} from '@nestjs/common';
+    UnauthorizedException , BadRequestException} from '@nestjs/common';
 import { LocalGuard} from '../../auth.guards';
 import { AuthService } from '../../services/auth/auth.service';
   
@@ -48,7 +48,6 @@ export class AuthController {
     async refresh(
       @Request() req ,
       @Response() replay: FastifyReply){
-        //da cancellare nella richiesta post
         
       const key =await  this.authService.refresh(req.user);
       if(!key) throw new UnauthorizedException();
