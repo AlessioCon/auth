@@ -10,21 +10,21 @@ export type User = any;
 export class UsersService {
     private readonly users = [
         {
-            id: 1,
-            username: 'aleUser',
-            password: '$2b$10$fjaasWyvTZjuCobhwpC0eOP/W7jZpC1PO3CNXsLfkkosbvPpmocMS',
-            email   : 'ale@gmail.com'
+            _id: 1,
+            usn: 'aleUser',
+            pas: '$2b$10$fjaasWyvTZjuCobhwpC0eOP/W7jZpC1PO3CNXsLfkkosbvPpmocMS',
+            email: 'ale@gmail.com'
         },
         {
-            id: 2,
-            username: 'mircoUser',
-            password: 'mircoUser',
+            _id: 2,
+            usn: 'mircoUser',
+            pas: 'mircoUser',
             email   : 'mirco@gmail.com'
         },
         {
-            id: 3,
-            username: 'finUser',
-            password: 'finUser',
+            _id: 3,
+            usn: 'finUser',
+            pas: 'finUser',
             email   : 'fin@gmail.com'
         }
     ]
@@ -41,7 +41,7 @@ export class UsersService {
             //email già in uso => email
             //stesso username  => usn
 
-        let bcryptPass = await bcrypt.hash(user.pass, 10)
+        let bcryptPass = await bcrypt.hash(user.pas, 10)
         let createUser = {pass: bcryptPass , ...user}
 
         return createUser

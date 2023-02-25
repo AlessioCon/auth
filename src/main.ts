@@ -1,4 +1,7 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+
+
 import {
   FastifyAdapter,
   NestFastifyApplication,
@@ -10,6 +13,7 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter()
   );
+  app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('api')
   await app.listen(process.env.PORT || '3000', '0.0.0.0');
 }

@@ -15,8 +15,7 @@ class UserNameDto {
 }
 
 
-
-
+//dati di login
 export class UserSignInDto {
 
     @ValidateNested()
@@ -35,5 +34,6 @@ export class UserSignInDto {
 
     @IsString()
     @IsNotEmpty()
-    pass: string;
+    pas: string;
 }
+

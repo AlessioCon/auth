@@ -3,10 +3,15 @@ import { UsersModule } from 'src/users/users.module';
 import { AuthService } from './services/auth/auth.service';
 
 import { PassportModule } from '@nestjs/passport/dist';
+import { JwtModule  } from '@nestjs/jwt';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AuthUser, AuthUserSchema } from './schemas/authUser.schema';
 import { LocalStrategy } from './startegy/local.strategy';
 import { JwtStartegy } from './startegy/jwt.startegy';
-import { JwtModule  } from '@nestjs/jwt';
-import { JwtGuard } from './allGuards';
+import { AuthController } from './controller/auth/auth.controller';
+
+import { ConfigModule } from '@nestjs/config';
+import jwtConfig from 'src/config/jwtConfig';
 
 
 
@@ -15,13 +20,13 @@ import { JwtGuard } from './allGuards';
   imports: [
     UsersModule, 
     PassportModule,
-    JwtModule.registerAsync({useFactory: async () => ({
-      secret: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: 60 * 60 * 24},
-      }),     
-    })
+    MongooseModule.forFeature([{ name: AuthUser.name, schema: AuthUserSchema }]),
+    ConfigModule.forFeature( jwtConfig ),
+    JwtModule.registerAsync( jwtConfig.asProvider() ),
+
   ],
-  providers: [AuthService, LocalStrategy, JwtStartegy],
-  exports: [AuthService]
+  providers:[AuthService, LocalStrategy, JwtStartegy],
+  exports: [AuthService],
+  controllers: [AuthController],
 })
 export class AuthModule {}
