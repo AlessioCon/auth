@@ -1,0 +1,85 @@
+:root{
+  --txt: rgb(32, 32, 32);
+  --light-off: rgb(196, 18, 18);
+  --light-on: rgb(95, 255, 2);
+}
+
+*, * + * {
+  box-sizing: border-box;
+}
+
+
+
+h1{
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+
+
+.box-card{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3 , 1fr);
+  max-width: 900px;
+  min-width: 400px;
+  gap: 1em;
+  margin: 0px auto;
+  border: 1px solid var(--txt);
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+
+.box-card::after{
+  content: '';
+  position: absolute;
+  top: 8px ; right: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background-color: var(--light-off);
+  border: 1px solid var(--txt);
+  box-shadow: 0px 0px 20px 1px var(--light-off);
+}
+
+.box-card.ligth::after{
+  background-color: var(--light-on);
+  box-shadow: 0px 0px 20px 1px var(--light-on);
+}
+
+@media (max-width:600px) {
+  .box-card{
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0px 1em;
+  }
+}
+
+.box-card > a{
+  display: block;
+  margin: 0px auto;
+  width: 100%;
+  border: 1px solid var(--txt);
+  max-width: 200px;
+  padding: 4em 2em;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.2) ;
+  color: black;
+  text-decoration: none;
+  transition: transform 0.3s ease-out;
+}
+
+.box-card > a:hover{
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.btn-first{
+  display: block;
+  padding: 1em 0.8em;
+  background-color: inherit;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.4);
+  margin: 1em auto;
+}
