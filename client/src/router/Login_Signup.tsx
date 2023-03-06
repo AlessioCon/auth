@@ -14,13 +14,13 @@ export default function Login_Signup(){
     const [signIn , setSignIn] = useState(false);
     const [error, setError] = useState<FormError>([null, '']);
     const [logVariable , setLogVariable] = useState({
-        email: 'ale@gmail.com',
-        password: 'Ale',
+        email: 'prova@gmail.com',
+        password: 'Prova12$',
     })
 
     const [singVariable , setSingVariable] = useState({
-        nome: 'alessio', cognome:'conforto', user:'ale', 
-        sign_email:'alessio@gmail.com', sign_password:'Alessio12$', sign_password_c:'Alessio12$'
+        nome: '', cognome:'', user:'', 
+        sign_email:'', sign_password:'', sign_password_c:''
     })
 
 
